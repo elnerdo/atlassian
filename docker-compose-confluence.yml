@@ -1,0 +1,22 @@
+confluence:
+  hostname: confluence
+  build: docker/confluence
+  ports:
+    - "8090:8090" # no cache
+  links:
+    - database
+  volumes:
+    - confluence-home:/opt/confluence-home
+
+database:
+  hostname: database
+  build: docker/postgres
+  volumes:
+    - tmp:/tmp # import backups
+  volumes_from:
+    - persistent
+
+persistent:
+  image: busybox
+  volumes:
+    - /var/lib/postgresql/data

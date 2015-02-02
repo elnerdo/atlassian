@@ -1,0 +1,22 @@
+jira:
+  hostname: jira
+  build: docker/jira
+  ports:
+    - "8080:8080" # no cache
+  links:
+    - database
+  volumes:
+    - jira-home:/opt/jira-home
+
+database:
+  hostname: database
+  build: docker/postgres
+  volumes:
+    - tmp:/tmp # import backups
+  volumes_from:
+    - persistent
+
+persistent:
+  image: busybox
+  volumes:
+    - /var/lib/postgresql/data
