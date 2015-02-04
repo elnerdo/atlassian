@@ -19,7 +19,7 @@ confluence:
 
 database:
   hostname: database
-  build: docker/postgres
+  build: docker/postgres_confluence
   volumes:
     - tmp:/tmp # import backups
   volumes_from:

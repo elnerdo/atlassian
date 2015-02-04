@@ -20,7 +20,7 @@ stash:
 
 database:
   hostname: database
-  build: docker/postgres
+  build: docker/postgres_stash
   volumes:
     - tmp:/tmp # import backups
   volumes_from:
