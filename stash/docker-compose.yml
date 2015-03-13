@@ -9,6 +9,16 @@ stash:
     - home:/opt/stash-home
   restart: always
 
+nginx:
+  hostname: nginx
+  build: docker/nginx
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - stash
+  restart: always
+
 database:
   hostname: database
   build: docker/postgres
