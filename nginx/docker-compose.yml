@@ -6,7 +6,7 @@ nginx:
     - "443:443"
   restart: always
 
-netcat:
-  hostname: netcat
-  build: docker/netcat
+haproxy:
+  hostname: haproxy
+  build: docker/haproxy
   restart: always
